@@ -1,22 +1,32 @@
 [project]
-name = "mcp-server-deepdive-deployment"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.10"
+name = "mcp-server-deepdive-deployment" # Name of the Python project/package
+version = "0.1.0"                       # Current project version
+description = "Add your description here" # Short description of the project
+readme = "README.md"                    # README file used as the long project description
+requires-python = ">=3.10"              # Minimum Python version required
+
 dependencies = [
-    "mcp[cli]>=1.9.0",
+    "mcp[cli]>=1.9.0,<2.0.0",             # MCP package with CLI extras, pinned to v1.x (FastMCP API)
 ]
 
+
 [project.scripts]
+# Creates a command-line executable named "mcp-server"
+# It calls the main() function from src/mcpserver/__main__.py
 mcp-server = "mcpserver.__main__:main"
 
+
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+# Defines the tools required to build/install this Python package
+requires = ["setuptools"]                # Use setuptools as the build tool
+build-backend = "setuptools.build_meta"  # Setuptools build backend
+
 
 [tool.setuptools]
+# Tells setuptools that the Python source code is inside the "src" directory
 package-dir = {"" = "src"}
 
+
 [tool.setuptools.packages.find]
+# Automatically discover Python packages inside the src directory
 where = ["src"]
